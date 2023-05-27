@@ -80,9 +80,9 @@ async fn try_encrypt(_biscuit: &str, _table: &str, _token: &str, _key: &str) -> 
     let ephemeral_secret_key = SecretKey::new(&mut rand::thread_rng());
     let ephemeral_public_key = PublicKey::from_secret_key(&secp, &ephemeral_secret_key).serialize();
   
+    //Set the cipher
     let cipher = Cipher::aes_256_cbc();
 
-    
     //Create the encryption key
     //Hash the DON public key, hex the hash, 
     //Slice the first 32 characters, grab the mac key, then convert key slice to bytes
