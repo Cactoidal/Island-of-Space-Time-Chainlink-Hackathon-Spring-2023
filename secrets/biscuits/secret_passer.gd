@@ -61,7 +61,7 @@ func _secret_placed(result, response_code, headers, body):
   	#   SUMMONING WOULD TAKE PLACE HERE  *
 	# Summoning will first encrypt secrets with the DON public key, then perform executeRequest()
   
-	# Summon.try_encrypt(reader_biscuit, table_name, auth_token, secret_decryption_key)
+	Summon.try_encrypt(reader_biscuit, table_name, auth_token, secret_decryption_key)
 	# query string and image table biscuit are on-chain
 
 
