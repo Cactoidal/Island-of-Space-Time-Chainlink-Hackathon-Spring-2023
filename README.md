@@ -36,11 +36,11 @@ Image generation works by taking your OpenAI API key, performing a query, receiv
 
 I've designed a system mimicking the Github Gist system that would instead use SxT tables as a means of passing secrets to the Chainlink DON, but Functions currently does not accept Inline secrets, therefore I cannot test it.  You can find the code for this implementation under the [secrets folder](secrets).  The scheme would work as follows:
 
-Godot encrypts your OpenAI API key, creates a new SxT biscuit, uses the biscuit to create a private table on SxT, and places the encrypted key there.  
+* Godot encrypts your OpenAI API key, creates a new SxT biscuit, uses the biscuit to create a permissioned table on SxT, and places the encrypted key there.  
 
-Godot then uses the DON public key to encrypt the access biscuit, the access token, the table's randomized name, and the encrypted OpenAI key's decryption key.  These values are sent on-chain to the DON, and only the DON can decrypt them.  
+* Godot then uses the DON public key to encrypt the access biscuit, the access token, the table's randomized name, and the encrypted OpenAI key's decryption key.  These values are sent on-chain to the DON, and only the DON can decrypt them.  
 
-Once the DON receives the encrypted payload, the DON accesses your OpenAI key, decrypts it, performs the OpenAI request, and then deletes the table.  Godot would also perform a follow-up sanity check to ensure the table is deleted.
+* Once the DON receives the encrypted payload, the DON accesses your OpenAI key, decrypts it, performs the OpenAI request, and then deletes the table.  Godot would also perform a follow-up sanity check to ensure the table is deleted.
 
 
 
