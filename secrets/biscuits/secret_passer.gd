@@ -44,12 +44,12 @@ func _table_created(result, response_code, headers, body):
 	http_request.connect("request_completed", self, "_secret_placed")
 	http_request_delete = http_request
   
-  # This as-yet unimplemented function would use Godot-Rust to encrypt the user's openAI key
-  # in preparation for decryption by the DON using vanilla Node Crypto functions
-  var key_encrypt = User.encrypt(User.open_ai_key)
+  	# This as-yet unimplemented function would use Godot-Rust to encrypt the user's openAI key
+  	# in preparation for decryption by the DON using vanilla Node Crypto functions
+  	var key_encrypt = User.encrypt(User.open_ai_key)
   
-  secret_decryption_key = key_encrypt[0]
-  secret = key_encrypt[1]
+  	secret_decryption_key = key_encrypt[0]
+  	secret = key_encrypt[1]
   
 	var request_body = JSON.print({"resourceId": "IMAGINARY." + table_name, "sqlText": "INSERT INTO IMAGINARY." + table_name + "(ID, NAME) VALUES ('" + generate_hash() + "', '" + secret + "')"})
 	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/dml", ["accept: application/json", "authorization: Bearer " + auth_token, "biscuit: " + creator_biscuit, "content-type: application/json"], true, HTTPClient.METHOD_POST, request_body)
