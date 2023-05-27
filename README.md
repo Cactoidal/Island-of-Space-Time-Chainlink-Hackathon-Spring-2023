@@ -32,7 +32,7 @@ The address is 0xa63972A60D577D4c40A84eDABE232B945714Bce3.
 
 Image generation works by taking your OpenAI API key, performing a query, receiving a base64 string, and uploading that string to Space and Time.
 
-**Currently, no Chainlink Functions call takes place, and your OpenAI API key is not passed to a DON.  Godot instead handles the API call and uploads the image by itself.**
+**Currently, no Chainlink Functions call takes place, and your OpenAI API key is not passed to a DON.  Godot instead handles the API call and uploads the image by itself.**  Chainlink Functions' HTTP Maximum request length is 2kb, while the base64 strings from OpenAI are approximately 250kb.
 
 I've designed a system mimicking the Github Gist system that would instead use SxT tables as a means of passing secrets to the Chainlink DON, but Functions currently does not accept Inline secrets, therefore I cannot easily test it.  You can find the code for this implementation under the [secrets folder](secrets).  The scheme would work as follows:
 
