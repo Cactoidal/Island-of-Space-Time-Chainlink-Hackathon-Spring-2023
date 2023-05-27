@@ -1,7 +1,6 @@
 extends Node
 
 var table_name
-#User.auth_token
 var auth_token = User.auth_token
 var http_request_delete
 var secret
