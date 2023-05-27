@@ -1,4 +1,4 @@
- [main.rs](main.rs) is a Rust implementation of encryptWithPublicKey() from the eth-crypto.js library, currently used by the Chainlink Functions starter kit.  It attempts to replicate the chain of operations shown in the starter kit, eth-crypto.js, eccrypto.js, and node:crypto.js. It is currently untested and likely needs tweaks.
+ [main.rs](main.rs) is a Rust implementation of encryptWithPublicKey() from the eth-crypto.js library, currently used by the Chainlink Functions starter kit.  It attempts to replicate the chain of operations shown in the starter kit, eth-crypto.js, eccrypto.js, and node:crypto.js. It will succesfully produce an aes256cbc output JSON and subsequently an encoded base64 string, but its reception by a DON is currently untested and likely will need tweaks for compatibility.
  
 [lib.rs](/secrets/biscuits/lib.rs) is a Godot-Rust implementation of the biscuit-auth protocol used by Space & Time, allowing Godot to generate biscuits for creating and accessing SxT tables.  This has been tested and works.
 
