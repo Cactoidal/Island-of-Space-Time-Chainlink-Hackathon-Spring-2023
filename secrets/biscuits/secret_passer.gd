@@ -21,7 +21,7 @@ func pass_secret():
 	
 	var blank: PoolStringArray = []
   
-  # Create the biscuit keypair and generate the creator and reader biscuits
+  	# Create the biscuit keypair and generate the creator and reader biscuits
 	var new_biscuit = Biscuit.generate_biscuits(blank, sxt_fact1, sxt_fact2, sxt_fact3, sxt_fact4)
 	
 	creator_biscuit = new_biscuit[2]
@@ -59,9 +59,9 @@ func _secret_placed(result, response_code, headers, body):
 	http_request_delete.queue_free()
   
   	#   SUMMONING WOULD TAKE PLACE HERE  *
-	# summoning will first encrypt secrets with the DON public key, then perform executeRequest()
+	# Summoning will first encrypt secrets with the DON public key, then perform executeRequest()
   
-	# KeyGen.summon(reader_biscuit, table_name, auth_token, secret_decryption_key)
+	# Summon.try_encrypt(reader_biscuit, table_name, auth_token, secret_decryption_key)
 	# query string and image table biscuit are on-chain
 
 
