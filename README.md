@@ -16,6 +16,8 @@ Built using [Godot](https://github.com/godotengine) and [Godot-Rust](https://git
 
 >C to capture/uncapture mouse
 
+>Spacebar to jump
+
 
 
 ## Embark
