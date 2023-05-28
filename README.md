@@ -3,7 +3,9 @@
 
 ## Summoning
 
-Dynamically create in-game images using artificial intelligence, with parameters bound by a smart contract.  With SxT, images are shared with all players, without needing to connect to a centralized server.  Built using Godot and Godot-Rust.
+Dynamically create in-game images using artificial intelligence, with parameters bound by a smart contract.  With SxT, images are shared with all players, without needing to connect to a centralized server.  
+
+Built using Godot and Godot-Rust.
 
 
 >WASD/Arrow keys to move
