@@ -14,7 +14,7 @@ Built using [Godot](https://github.com/godotengine) and [Godot-Rust](https://git
 
 >E to interact
 
->C to capture/uncapture mouse
+>C / Esc to capture/uncapture mouse
 
 >Spacebar to jump
 
