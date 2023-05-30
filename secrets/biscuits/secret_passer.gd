@@ -80,12 +80,6 @@ func generate_hash():
 			chunk_string = "0" + chunk_string
 		hash_string += chunk_string
 	return hash_string.sha256_text()
-	
 
-#Used for creating embedded keystore using Godot-Rust
-func generate_secret_key(var password):
-	#will overwrite existing keystore - check if one exists!
-	KeyGen.generate_keys(password)
-	
 
 	
