@@ -24,12 +24,7 @@ Built using [Godot](https://github.com/godotengine) and [Godot-Rust](https://git
 
 You should need only the game client to enter the Island.  However, if you want to summon creatures, you will need to provide your own OpenAI API key.  Please note that you will incur the usual fees for generating images.  Also, if you don't want to rely on the on-chain SxT relay, you may provide your own REFRESH token.  Otherwise, please leave that field blank.
 
-Be aware that for the purposes of the demo, all players will be sharing the same embedded keystore.  If you run out of gas, please top off at the Mumbai MATIC faucet here:
-
-https://faucet.polygon.technology
-
-The address is 0xa63972A60D577D4c40A84eDABE232B945714Bce3.
-
+The game uses an embedded keystore that will be generated the first time you start playing.  Make sure to click the "Copy Address" button and the "Get MATIC" button to get some gas.
 
 
 ## Secrets
