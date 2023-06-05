@@ -12,7 +12,7 @@ I have uploaded the script files I personally wrote for this project.
 
 [CreatureBehavior.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/CreatureBehavior.gd) controls the movement behavior of creatures spawned into the game, and also makes sure they spawn correctly on top of the terrain no matter the angle or height of their random spawn location.
 
-In the rust folder, you will find the library I created to implement Ethers.rs using Godot Rust.
+[In the rust folder, you will find the library I created to implement Ethers.rs using Godot Rust.](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/rust/lib.rs)
 
 Godot uses a node-based architecture reliant on "scene" and "resource" files.  I have not uploaded these as they primarily consist of configuration data, nor have I provided the plugin or asset files (the latter amounting to hundreds of MBs).  However, I will provide links below to the invaluable resources I have used to make this project:
 
