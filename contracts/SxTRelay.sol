@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-//current deployment: 0xA1BecEaFeCd49F78804F20724B0e5c648f108faD
-
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract SxTRelay is Ownable {
