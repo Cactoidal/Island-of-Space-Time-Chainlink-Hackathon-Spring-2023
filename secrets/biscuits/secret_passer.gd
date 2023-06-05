@@ -32,8 +32,15 @@ func pass_secret():
 	http_request.connect("request_completed", self, "_table_created")
 	http_request_delete = http_request
 
-	var body = JSON.print({"sqlText": "CREATE TABLE IMAGINARY." + table_name +  " (ID VARCHAR, NAME VARCHAR, PRIMARY KEY (ID)) WITH \"public_key=" + new_biscuit[0] + ",access_type=permissioned\""})
-	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/ddl", ["accept: application/json", "authorization: Bearer " + auth_token, "biscuit: " + creator_biscuit, "content-type: application/json"], true, HTTPClient.METHOD_POST, body)
+	var body = JSON.print({"sqlText": "CREATE TABLE IMAGINARY." + table_name +  
+	" (ID VARCHAR, NAME VARCHAR, PRIMARY KEY (ID)) WITH \"public_key=" + new_biscuit[0] + 
+	",access_type=permissioned\""})
+	
+	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/ddl", 
+	["accept: application/json", "authorization: Bearer " + auth_token, "biscuit: " + creator_biscuit, "content-type: application/json"], 
+	true, 
+	HTTPClient.METHOD_POST, 
+	body)
 	
 
 func _table_created(result, response_code, headers, body):
@@ -51,8 +58,13 @@ func _table_created(result, response_code, headers, body):
   	secret_decryption_key = key_encrypt[0]
   	secret = key_encrypt[1]
   
-	var request_body = JSON.print({"resourceId": "IMAGINARY." + table_name, "sqlText": "INSERT INTO IMAGINARY." + table_name + "(ID, NAME) VALUES ('" + generate_hash() + "', '" + secret + "')"})
-	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/dml", ["accept: application/json", "authorization: Bearer " + auth_token, "biscuit: " + creator_biscuit, "content-type: application/json"], true, HTTPClient.METHOD_POST, request_body)
+	var request_body = JSON.print({"resourceId": "IMAGINARY." + table_name, "sqlText": "INSERT INTO IMAGINARY." + table_name + 
+	"(ID, NAME) VALUES ('" + generate_hash() + "', '" + secret + "')"})
+	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/dml", 
+	["accept: application/json", "authorization: Bearer " + auth_token, "biscuit: " + creator_biscuit, "content-type: application/json"], 
+	true, 
+	HTTPClient.METHOD_POST, 
+	request_body)
 
 
 func _secret_placed(result, response_code, headers, body):
