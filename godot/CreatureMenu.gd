@@ -52,9 +52,6 @@ func close():
 		queue_free()
 	
 
-#this is probably just coming back invalid because I am trying to append 
-#rather than just replace the array
-#replace the array
 var http_request_delete
 func start_get_creature_list():	
 	player.recheck_menu = false
@@ -132,7 +129,6 @@ func get_creature_list(result, response_code, headers, body):
 					new_creature["attack"] = parse_json(creature_object)["attack"].hex_to_int()
 					new_creature["image"] = creature[2]
 				
-				#wait what?
 					player.player_list.append(new_creature)
 				
 			file.close()
@@ -263,36 +259,3 @@ func cancel(var prompt):
 	if http_request_delete != null:
 		http_request_delete.queue_free()
 	prompt.queue_free()
-
-
-
-
-func old_ready():
-	var file = File.new()
-	file.open("user://keystore", File.READ)
-	var content = file.get_buffer(32)
-	KeyGen.get_creatures(content, self)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	var start_position = Vector2(25, 50)
-	for creature in User.creature_list:
-		if creature[1] in player_creatures:
-			KeyGen.get_creature_object(content, creature[1], self)
-			var new_unit = unit.instance()
-			new_unit.get_node("HP").text = "HP: " + str(parse_json(creature_object)["hp"].hex_to_int())
-			new_unit.get_node("Attack").text = "Attack: " + str(parse_json(creature_object)["attack"].hex_to_int())
-			new_unit.get_node("Location").connect("pressed", self, "prompt_location", [creature[1], creature[2]])
-			new_unit.get_node("Demeanor").connect("pressed", self, "prompt_demeanor", [creature[1], creature[2]])
-			new_unit.get_node("Quest").connect("pressed", self, "prompt_quest", [creature[1], creature[2]])
-			new_unit.get_node("Image").texture = creature[2]
-			new_unit.get_node("Image").rect_scale = Vector2(0.35,0.35)
-			$ScrollContainer/Creatures.add_child(new_unit)
-			new_unit.rect_position = start_position
-			if right == false:
-				right = true
-				start_position += Vector2(400, 0)
-				$ScrollContainer/Creatures.rect_min_size += Vector2(0, 235)
-			else:
-				right = false
-				start_position += Vector2(-400, 235)
-	$ScrollContainer/Creatures.rect_min_size += Vector2(0, 50)
-	file.close()
