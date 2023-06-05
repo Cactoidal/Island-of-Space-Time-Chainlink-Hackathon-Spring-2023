@@ -48,7 +48,7 @@ Image generation works by taking your OpenAI API key, performing a query, receiv
 
 I spent a great deal of time working to integrate Chainlink Functions into the game. Namely, I ported the secrets encryption functionality of the starter kit into Rust, and built a tool that allows Godot Rust to create SxT biscuits that would be used for secret-passing. **Currently, no Chainlink Functions call takes place, and your OpenAI API key is not passed to a DON. Godot instead handles the API call and uploads the image by itself.** Chainlink Functions' HTTP Maximum request length is 2kb, while the base64 strings from OpenAI are approximately 250kb.
 
-I've designed a system mimicking the Github Gist system that would instead use SxT tables as a means of passing secrets to the Chainlink DON, but Functions currently does not accept Inline secrets, therefore I cannot easily test it.   [You can find the code for this implementation under the secrets folder](secrets).  The scheme would work as follows:
+I've designed a system mimicking the Github Gist system that would instead use SxT tables as a means of passing secrets to the Chainlink DON.   [You can find the code for this implementation under the secrets folder](secrets).  The scheme would work as follows:
 
 * Godot encrypts your OpenAI API key, creates a new SxT biscuit, uses the biscuit to create a permissioned table on SxT, and places the encrypted key there.  
 
