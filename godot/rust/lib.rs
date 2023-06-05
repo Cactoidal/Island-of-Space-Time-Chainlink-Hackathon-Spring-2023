@@ -1,15 +1,14 @@
 extern crate biscuit_auth as biscuit;
 
 
-use gdnative::{prelude::*, object::ownership, api::File, core_types::ToVariant};
-use biscuit_auth::{KeyPair, Biscuit, error::*};
-use ethers::{core::{k256::elliptic_curve::scalar::ScalarPrimitive, abi::{Abi,struct_def::StructFieldType, AbiEncode}, types::*}, utils::*, signers::*, providers::*, prelude::SignerMiddleware};
-use ethers_contract::{Contract, abigen};
+use gdnative::{prelude::*, core_types::ToVariant};
+use biscuit_auth::{KeyPair, Biscuit};
+use ethers::{core::{abi::{struct_def::StructFieldType, AbiEncode}, types::*}, utils::*, signers::*, providers::*, prelude::SignerMiddleware};
+use ethers_contract::{abigen};
 use std::{convert::TryFrom, sync::Arc};
 use tokio::runtime::{Builder, Runtime};
 use futures::Future;
 use tokio::macros::support::{Pin, Poll};
-use rand::Rng;
 use serde_json::json;
 
 thread_local! {
@@ -148,20 +147,6 @@ impl Future for NewFuture {
     fn poll(self: Pin<&mut Self>, _: &mut std::task::Context<'_>) -> Poll<<Self as futures::Future>::Output> { todo!() }
 }
 
-#[derive(ToVariant, FromVariant)]
-struct CryptoArray(gdnative::prelude::PoolArray<u8>);
-
-impl Into<[u8; 32]> for CryptoArray {
-    fn into(self) -> [u8; 32] { todo!() }
-}
-
-
-
-abigen!(
-    TestContract,
-    "./src/Test_ABI.json",
-    event_derives(serde::Deserialize, serde::Serialize)
-);
 
 abigen!(
     ChainlinkVRF,
@@ -185,46 +170,6 @@ struct KeyGen;
 impl KeyGen {
     fn new(_owner: &Node) -> Self {
         KeyGen
-    }
- 
-   
-    #[method]
-    #[tokio::main]
-     async fn sign() -> NewFuture {
-        
-        //allow passage of password from godot
-        let signing_key = Wallet::decrypt_keystore("./lolkeys/path", "password");
-        //godot_print!("Wallet Recovered(!): {:?}", signing_key.unwrap());
-
-        let prewallet: LocalWallet = signing_key.unwrap();
-        
-        let wallet: LocalWallet = prewallet.with_chain_id(Chain::PolygonMumbai);
-
-        let provider = Provider::<Http>::try_from("https://rpc-mumbai.maticvigil.com/").expect("could not instantiate HTTP Provider");
-        //let tx = TransactionRequest::pay(rando_address, 100000);
-
-        let client = SignerMiddleware::new(&provider, wallet);
-        
-        let self_address: Address = client.address();
-        
-        let contract_address: Address = "0xf09839D028B59c6eDF4D0BF0Af7961D7fbEbE9F0".parse().unwrap();
-       
-        let abi: Abi = serde_json::from_str(r#"[{"inputs":[{"internalType":"string","name":"value","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"author","type":"address"},{"indexed":true,"internalType":"address","name":"oldAuthor","type":"address"},{"indexed":false,"internalType":"string","name":"oldValue","type":"string"},{"indexed":false,"internalType":"string","name":"newValue","type":"string"}],"name":"ValueChanged","type":"event"},{"inputs":[],"name":"getValue","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastSender","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"value","type":"string"}],"name":"setValue","outputs":[],"stateMutability":"nonpayable","type":"function"}]"#).unwrap();
-
-        let contract = Contract::new(contract_address, abi, Arc::new(&provider));
-
-        let address_to: Address = "0xa63972A60D577D4c40A84eDABE232B945714Bce3".parse().unwrap();
-
-        let tx = TransactionRequest::new()
-        .to(address_to)
-        .value(1)
-        .from(self_address);
-
-        let tx = client.send_transaction(tx, None).await.unwrap().await.unwrap();
-
-        godot_print!("Transaction Receipt: {}", serde_json::to_string(&tx).unwrap());
-        NewFuture(Ok(()))
-        
     }
 
 
@@ -704,7 +649,8 @@ NewFuture(Ok(()))
 
 
 
+
+
 }
 
 godot_init!(init);
-
