@@ -24,7 +24,9 @@ Built using [Godot](https://github.com/godotengine) and [Godot-Rust](https://git
 
 ## Embark
 
-Download the game client for your system here. **Currently, only Mac is supported.**  If the SxT relay is operational, you should need only the game client to enter the Island. However, if you want to summon creatures, you will need to provide your own OpenAI API key on the login screen. Please note that you will incur the usual fees for generating images. If the relay is available, you may use it by leaving the SxT field blank. Otherwise, you will need to provide your own REFRESH token to summon and see creatures.
+[Download the game client for your system on the release page.](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/releases/tag/SxT_Island) **Currently, only Mac ARM is supported.**  Intel Mac may also work, but has not been tested.
+
+If the SxT relay is operational, you should need only the game client to enter the Island. However, if you want to summon creatures, you will need to provide your own OpenAI API key on the login screen. Please note that you will incur the usual fees for generating images. If the relay is available, you may use it by leaving the SxT field blank. Otherwise, you will need to provide your own REFRESH token to summon and see creatures.
 
 The game will generate a keystore file for you when you first start playing. Click the "Copy Address" and "Get MATIC" buttons to get gas from the faucet.
 
