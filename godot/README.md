@@ -51,5 +51,3 @@ Ocean Sound https://freesound.org/people/tawix/sounds/547222/
 Stream Sound https://freesound.org/people/Auxide_Audio/sounds/585497/
 
 Heightmap https://heightmap.skydark.pl/beta/ (Somewhere east of Yosemite)
-
-Godot Metamask https://github.com/nate-trojian/MetamaskAddon
