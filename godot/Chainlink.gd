@@ -16,55 +16,6 @@ func _process(delta):
 		rotate_y(deg2rad(0.25))
 
 
-
-func slightly_newer_yet_old_process(delta):
-	if circle_flat == false:
-		rotate_z(deg2rad(0.5))
-	else:
-		rotate_y(deg2rad(0.5))
-
-
-var speed = 0.5
-var holding = false
-var hold = 0
-
-func older_process(delta):
-	print(str(rotation.z))
-	if holding == false:
-		rotate_z(deg2rad(speed))
-	if rotation.z > -0.09 && rotation.z < -0.08:
-		holding = true
-	if holding == true:
-		hold += delta
-	if hold >= 2:
-		hold = 0
-		holding = false
-		rotate_z(deg2rad(0.5))
-
-
-var decelerate = true
-var multiple = 0.001
-func old_process(delta):
-	print(speed)
-	rotate_z(deg2rad(speed))
-	if decelerate == true:
-		speed -= (0.001 * multiple)
-		multiple += 0.01
-	else:
-		speed += (0.001 * multiple)
-		multiple += 0.01
-	if speed <= 0.1:
-		decelerate = false
-		multiple = 0.01
-	if speed >= 0.7:
-		decelerate = true
-		multiple = 0.01
-	
-	
-	
-	
-
-
 func _on_Area_body_entered(body):
 	get_parent().visible = true
 	get_parent().get_parent().get_node("Water").queue_free()
