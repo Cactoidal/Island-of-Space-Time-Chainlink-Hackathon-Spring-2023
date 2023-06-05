@@ -11,7 +11,6 @@ use std::{convert::TryFrom, sync::Arc};
 fn init(handle: InitHandle) {
 
     handle.add_class::<BiscuitGenerator>();
-    handle.add_class::<KeyGen>();
 }
 
 pub trait ToVariant {
@@ -72,27 +71,6 @@ impl BiscuitGenerator {
         blank
       
     }
-}
-
-#[derive(NativeClass, Debug, ToVariant, FromVariant)]
-#[inherit(Node)]
-struct KeyGen;
-
-#[methods]
-impl KeyGen {
-    fn new(_owner: &Node) -> Self {
-        KeyGen
-    }
-
-    #[method]
-    fn generate_keys(password: GodotString) {
-        
-        let mut rng = rand::thread_rng();
-    
-        let keys = Wallet::new_keystore("./lolkeys", &mut rng, password.to_string(), Some("path"));
-
-    }
-
 }
 
 
