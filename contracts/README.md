@@ -1,1 +1,3 @@
+[VRFQuery](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/contracts/VRFQuery.sol) generates the prompt sent to OpenAI to create creatures, and also provides the on-chain record of creatures to establish their provenance.  The contract also tracks each creature's base stats, location, demeanor, and summoner.
 
+[SxTRelay](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/contracts/SxTRelay.sol) is simply an on-chain access point to obtain an authorization token, and likely will only exist for the purposes of this hackathon.
