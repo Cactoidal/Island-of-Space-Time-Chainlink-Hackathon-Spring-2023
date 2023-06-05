@@ -10,6 +10,8 @@ Chainlink.gd is the reference point for the Summoning chamber, used to spawn and
 
 Player.gd is responsible for triggering interactions with the Chainlink VRF summoner and the Creature screen.  It also handles spawning of creatures into the world, and is what triggers teleportation when it collides with certain areas.  The FPS controller responsible for movement was copied from the youtube link below.
 
+CreatureBehavior.gd controls the movement behavior of creatures spawned into the game.
+
 Godot uses a node-based architecture reliant on "scene" and "resource" files.  I have not uploaded these as they primarily consist of configuration data, nor have I provided the plugin or asset files (the latter amounting to hundreds of MBs).  However, I will provide links below to the invaluable resources I have used to make this project:
 
 Godot https://github.com/godotengine/godot
