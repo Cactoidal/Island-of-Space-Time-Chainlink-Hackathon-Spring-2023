@@ -19,7 +19,7 @@ var creature_list = []
 var got_list = false
 
 #IMAGINARY.CREATURES
-var biscuit = redacted
+var biscuit = "redacted"
 
 func _ready():
 	pass 
@@ -45,7 +45,11 @@ func refresh_sxt():
 	base_node.get_node("DataEntry").get_node("Log").text += "\nRefreshing SxT Access..."
 	base_node.get_node("DataEntry").reset_log_fade()
 	
-	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/auth/refresh", ["accept: */*", "authorization: Bearer " + refresh_token], true, HTTPClient.METHOD_POST, "")
+	var error = http_request.request("https://hackathon.spaceandtime.dev/v1/auth/refresh", 
+	["accept: */*", "authorization: Bearer " + refresh_token], 
+	true, 
+	HTTPClient.METHOD_POST, 
+	"")
 	
 
 func refresh_attempted(result, response_code, headers, body):
@@ -60,7 +64,6 @@ func refresh_attempted(result, response_code, headers, body):
 		base_node.get_node("DataEntry").reset_log_fade()
 		http_request_delete.queue_free()
 		get_creatures()
-		#base_node.get_node("Chamber/PoolDisplay/Viewport/Pool").get_images()
 	
 	
 
@@ -123,9 +126,17 @@ func get_creatures():
 		http_request_delete = http_request
 		http_request.connect("request_completed", self, "creatures_obtained")
 
-		var body = JSON.print({"resourceId": "IMAGINARY.CREATURES", "sqlText": "SELECT * FROM IMAGINARY.CREATURES WHERE ID IN (" + query_values + ");"})
+		var body = JSON.print({"resourceId": "IMAGINARY.CREATURES", 
+		"sqlText": "SELECT * FROM IMAGINARY.CREATURES WHERE ID IN (" + query_values + ");"})
 			
-		var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/dql", ["accept: application/json", "authorization: Bearer " + auth_token, "biscuit: " + biscuit, "content-type: application/json"], true, HTTPClient.METHOD_POST, body)
+		var error = http_request.request("https://hackathon.spaceandtime.dev/v1/sql/dql", 
+		["accept: application/json", 
+		"authorization: Bearer " + auth_token, 
+		"biscuit: " + biscuit, 
+		"content-type: application/json"], 
+		true, 
+		HTTPClient.METHOD_POST, 
+		body)
 	
 
 var hash_compare = false
@@ -143,7 +154,11 @@ func creatures_obtained(result, response_code, headers, body):
 			var file = File.new()
 			file.open("user://keystore", File.READ)
 			var content = file.get_buffer(32)
-			KeyGen.check_hash(content, get_result[entry]["HASH"], get_result[entry]["ID"], base_node.get_node("DataEntry"))
+			
+			KeyGen.check_hash(content, get_result[entry]["HASH"], 
+			get_result[entry]["ID"], 
+			base_node.get_node("DataEntry"))
+			
 			file.close()
 			if hash_compare == true:
 				var new_creature = []
