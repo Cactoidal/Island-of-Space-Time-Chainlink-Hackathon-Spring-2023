@@ -1,16 +1,16 @@
 I have uploaded the script files I personally wrote for this project.  
 
-User.gd is a singleton holding universally important data such as the SxT refresh token and loaded creature set.  It periodically refreshes the SxT token and queries SxT for creature images.
+[User.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/User.gd) is a singleton holding universally important data such as the SxT refresh token and loaded creature set.  It periodically refreshes the SxT token and queries SxT for creature images.
 
-DataEntry.gd is the script handling the game's login and pause menu, and like User and Player also serves as a reference point for multiple other scripts.
+[DataEntry.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/DataEntry.gd) is the script handling the game's login and pause menu, and like User and Player also serves as a reference point for multiple other scripts.
 
-CreatureMenu.gd governs the Summoned Creature screen.  It queries SxT for the user's summoned creatures and is responsible for rendering them in the game.  It provides the Location and Demeanor buttons and their connections into Godot Rust.
+[CreatureMenu.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/CreatureMenu.gd) governs the Summoned Creature screen.  It queries SxT for the user's summoned creatures and is responsible for rendering them in the game.  It provides the Location and Demeanor buttons and their connections into Godot Rust.
 
-Chainlink.gd is the reference point for the Summoning chamber, used to spawn and delete the Island's terrain when exiting the doors or teleporting back inside.
+[Chainlink.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/Chainlink.gd) is the reference point for the Summoning chamber, used to spawn and delete the Island's terrain when exiting the doors or teleporting back inside.
 
-Player.gd is responsible for triggering interactions with the Chainlink VRF summoner and the Creature screen.  It also handles spawning of creatures into the world, and is what triggers teleportation when it collides with certain areas.  The FPS controller responsible for movement was copied from the youtube link below.
+[Player.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/Player.gd) is responsible for triggering interactions with the Chainlink VRF summoner and the Creature screen.  It also handles spawning of creatures into the world, and is what triggers teleportation when it collides with certain areas.  The FPS controller responsible for movement was copied from the youtube link below.
 
-CreatureBehavior.gd controls the movement behavior of creatures spawned into the game.
+[CreatureBehavior.gd](https://github.com/Cactoidal/Island-of-Space-Time-Chainlink-Hackathon-Spring-2023/blob/main/godot/CreatureBehavior.gd) controls the movement behavior of creatures spawned into the game, and also makes sure they spawn correctly on top of the terrain no matter the angle or height of their random spawn location.
 
 In the rust folder, you will find the library I created to implement Ethers.rs using Godot Rust.
 
