@@ -1,4 +1,4 @@
-I have uploaded the script files I modified or personally wrote for this project.  
+I have uploaded the script files I personally wrote for this project.  
 
 User.gd is a singleton holding universally important data such as the SxT refresh token and loaded creature set.  It periodically refreshes the SxT token and queries SxT for creature images.
 
