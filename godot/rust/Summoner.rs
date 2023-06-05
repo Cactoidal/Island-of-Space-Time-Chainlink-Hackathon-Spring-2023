@@ -13,7 +13,6 @@ let wallet: LocalWallet = prewallet.with_chain_id(Chain::PolygonMumbai);
 let provider = Provider::<Http>::try_from("https://rpc-mumbai.maticvigil.com/")
   .expect("could not instantiate HTTP Provider");
 
-//contract
 let contract_address: Address = "0x5A5CDB35B69D6af1A3684E9C03e27881Ce559214"
   .parse().unwrap();
 
@@ -46,7 +45,6 @@ let wallet: LocalWallet = prewallet.with_chain_id(Chain::PolygonMumbai);
 let provider = Provider::<Http>::try_from("https://rpc-mumbai.maticvigil.com/")
   .expect("could not instantiate HTTP Provider");
 
-//contract
 let contract_address: Address = "0x5A5CDB35B69D6af1A3684E9C03e27881Ce559214"
   .parse().unwrap();
 
