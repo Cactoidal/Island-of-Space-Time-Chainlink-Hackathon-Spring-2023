@@ -12,6 +12,8 @@ Player.gd is responsible for triggering interactions with the Chainlink VRF summ
 
 CreatureBehavior.gd controls the movement behavior of creatures spawned into the game.
 
+In the rust folder, you will find the library I created to implement Ethers.rs using Godot Rust.
+
 Godot uses a node-based architecture reliant on "scene" and "resource" files.  I have not uploaded these as they primarily consist of configuration data, nor have I provided the plugin or asset files (the latter amounting to hundreds of MBs).  However, I will provide links below to the invaluable resources I have used to make this project:
 
 Godot https://github.com/godotengine/godot
