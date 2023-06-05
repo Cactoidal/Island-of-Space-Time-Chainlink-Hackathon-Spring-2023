@@ -18,7 +18,7 @@ Built using [Godot](https://github.com/godotengine) and [Godot-Rust](https://git
 
 >Shift to run
 
->>C / ESC to capture/uncapture mouse
+>C / ESC to capture/uncapture mouse
 
 
 
