@@ -3,7 +3,8 @@ extern crate biscuit_auth as biscuit;
 
 use gdnative::{prelude::*, object::ownership};
 use biscuit_auth::{KeyPair, Biscuit, error::*};
-use ethers::{core::{k256::*, abi::{Abi,struct_def::StructFieldType}, types::*}, utils::*, signers::*, providers::*, prelude::SignerMiddleware};
+use ethers::{core::{k256::*, abi::{Abi,struct_def::StructFieldType}, types::*},
+    utils::*, signers::*, providers::*, prelude::SignerMiddleware};
 use ethers_contract::{Contract, abigen};
 use std::{convert::TryFrom, sync::Arc};
 
@@ -41,7 +42,11 @@ impl BiscuitGenerator {
 
     
     #[method]
-    fn generate_biscuits(mut blank: PoolArray<GodotString>, sxtfact1: GodotString, sxtfact2: GodotString, sxtfact3: GodotString, sxtfact4: GodotString) -> PoolArray<GodotString> {
+    fn generate_biscuits(mut blank: PoolArray<GodotString>, 
+        sxtfact1: GodotString, 
+        sxtfact2: GodotString, 
+        sxtfact3: GodotString, 
+        sxtfact4: GodotString) -> PoolArray<GodotString> {
         //Create public and private biscuit keypair
         let root = KeyPair::new();
         let public: GodotString = root.public().to_bytes_hex().to_string().into();
@@ -60,12 +65,14 @@ impl BiscuitGenerator {
         let mut creator_biscuit = Biscuit::builder();
         creator_biscuit.add_fact(fact1).unwrap();
         creator_biscuit.add_fact(fact2).unwrap();
-        blank.push(String::from_utf8(creator_biscuit.build(&root).unwrap().to_base64().unwrap().into_bytes()).unwrap().into());
+        blank.push(String::from_utf8(creator_biscuit.build(&root)
+            .unwrap().to_base64().unwrap().into_bytes()).unwrap().into());
 
         let mut reader_biscuit = Biscuit::builder();
         reader_biscuit.add_fact(fact3).unwrap();
         reader_biscuit.add_fact(fact4).unwrap();
-        blank.push(String::from_utf8(reader_biscuit.build(&root).unwrap().to_base64().unwrap().into_bytes()).unwrap().into());
+        blank.push(String::from_utf8(reader_biscuit.build(&root)
+            .unwrap().to_base64().unwrap().into_bytes()).unwrap().into());
 
         //Return to Godot
         blank
