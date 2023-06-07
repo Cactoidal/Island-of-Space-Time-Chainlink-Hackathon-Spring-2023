@@ -1,4 +1,4 @@
- [main.rs](main.rs) is a Rust implementation of encryptWithSignature() currently used by the Chainlink Functions starter kit.  It attempts to replicate the chain of operations shown in the starter kit, eth-crypto.js, eccrypto.js, and node:crypto.js. It will successfully produce an encoded base64 string composed of the concatenated iv/ephemkey/ciphertext/mac, containing the JSON payload of the signed secrets JSON, but its reception by a DON is currently untested and likely will need tweaks for compatibility.
+ [main.rs](main.rs) is a Rust implementation of encryptWithSignature() currently used by the Chainlink Functions starter kit.  It attempts to replicate the chain of operations shown in the starter kit, eth-crypto.js, eccrypto.js, and node:crypto.js. It will successfully produce an encoded base64 string composed of the concatenated iv/ephemkey/ciphertext/mac, containing the JSON payload of the signed secrets JSON, but it still needs tweaks to be accepted by a DON.
  
 Example output:
 
