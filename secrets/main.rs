@@ -144,7 +144,7 @@ async fn try_encrypt(_biscuit: &str, _table: &str, _token: &str, _key: &str) -> 
 
    
    // Encode in Standard Base64 (RFC 4648) 
-   let converted: String = general_purpose::STANDARD.encode(packed_data);
+   let converted: String = general_purpose::STANDARD_NO_PAD.encode(packed_data);
     
     
     // Create JSON for DON usage
