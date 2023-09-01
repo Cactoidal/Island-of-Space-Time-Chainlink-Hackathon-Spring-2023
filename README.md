@@ -1,6 +1,8 @@
 # Island of Space & Time
 
 
+Note: Not currently playable!
+
 ## Summoning
 
 Create images using Dall-E and Chainlink VRF, with parameters bound by a smart contract. With SxT, images are shared with all players, without needing to connect to a centralized server. Player-created creatures live on-chain. Gameplay is off-chain. 
